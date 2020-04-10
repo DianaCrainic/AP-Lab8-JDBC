@@ -3,6 +3,11 @@ import db.Database;
 
 import java.sql.*;
 
+/**
+ * Main class
+ * Application that allows to connect to a relational database by using JDBC,
+ * submit SQL statements and display the results.
+ */
 public class Main {
 
     private static Connection connection = Database.getInstance().getConnection();;
@@ -12,10 +17,10 @@ public class Main {
     public static void main(String[] args) {
         try {
             connection.setAutoCommit(false);
-            createArtistsTable();
-            createAlbumsTable();
-            createChartsTable();
-            insertRandomData(ROWS);
+            //createArtistsTable();
+            //createAlbumsTable();
+            //createChartsTable();
+            insertData(ROWS);
             ChartController chartController = new ChartController();
             chartController.generateTop();
 
@@ -33,15 +38,21 @@ public class Main {
         }
     }
 
-    private static void insertRandomData(int rows) throws SQLException {
+    /**
+     * inserts generated data about artist, album and chart
+     */
+    private static void insertData(int rows) throws SQLException {
         ArtistController artistController = new ArtistController();
         AlbumController albumController = new AlbumController();
         ChartController chartController = new ChartController();
-        artistController.insertRandomArtist(rows);
-        albumController.insertRandomAlbum(rows);
-        chartController.insertRandomChart(rows);
+        artistController.insertGeneratedArtist(rows);
+        albumController.insertGeneratedAlbum(rows);
+        chartController.insertGeneratedChart(rows);
     }
 
+    /**
+     * creates the artists table
+     */
     public static void createArtistsTable() {
         try {
             Statement statement = connection.createStatement();
@@ -57,6 +68,9 @@ public class Main {
         }
     }
 
+    /**
+     * creates the albums table
+     */
     public static void createAlbumsTable() {
         try {
             Statement statement = connection.createStatement();
@@ -73,6 +87,9 @@ public class Main {
         }
     }
 
+    /**
+     * creates the charts table
+     */
     public static void createChartsTable() {
         try {
             Statement statement = connection.createStatement();

@@ -3,8 +3,14 @@ package dao;
 import java.sql.*;
 import java.util.*;
 
-public class ChartController extends Controller {
 
+/**
+ * ChartController class:
+ * -insert data about an artist
+ * -get data from DB about an artist
+ * -generate a top
+ */
+public class ChartController extends Controller {
     public void create(int albumId, int numberOfAlbums) throws SQLException {
         connection = getConnection();
         String sql = "INSERT INTO chart (album_id, profit) VALUES(?,?);";
@@ -14,7 +20,7 @@ public class ChartController extends Controller {
         preparedStatement.execute();
     }
 
-    public void insertRandomChart(int rows) throws SQLException {
+    public void insertGeneratedChart(int rows) throws SQLException {
         connection = getConnection();
         Statement statement = connection.createStatement();
         AlbumController albumController = new AlbumController();
@@ -57,7 +63,6 @@ public class ChartController extends Controller {
         for (Map<String, Object> stringObjectMap : top) {
             System.out.println((int) stringObjectMap.get("position") + ". " + (String) stringObjectMap.get("name") +
                     " - profit: " + (int) stringObjectMap.get("total_profit"));
-
         }
     }
 }

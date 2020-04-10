@@ -3,6 +3,9 @@ package db;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * singleton class Database that manages a connection to the database
+ */
 public class Database {
 
     private static Database instance;

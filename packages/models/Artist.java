@@ -3,6 +3,10 @@ package models;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Artist class:
+ * - information about an artist
+ */
 public class Artist {
     private int id;
     private String name;

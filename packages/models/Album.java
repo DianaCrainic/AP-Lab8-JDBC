@@ -1,5 +1,9 @@
 package models;
 
+/**
+ * Album class
+ * -information about an album
+ */
 public class Album {
 
     private int id;

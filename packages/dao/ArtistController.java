@@ -6,6 +6,12 @@ import models.Artist;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * ArtistController class:
+ * -insert data about an artist
+ * -get data from DB about an artist
+ * -findByName - returns a list of artists
+ */
 public class ArtistController extends Controller {
 
     public ArtistController() {
@@ -20,9 +26,19 @@ public class ArtistController extends Controller {
         preparedStatement.execute();
     }
 
+    public void insertGeneratedArtist(int rows) throws SQLException {
+        Faker faker = new Faker();
+        int i = 0;
+        while (i < rows) {
+            String fakeName = faker.artist().name();
+            String fakeCountry = faker.country().name();
+            create(fakeName, fakeCountry);
+            i++;
+        }
+    }
+
     public List<Artist> findByName(String name) throws SQLException {
         List<Artist> artists = new ArrayList<>();
-
         connection = getConnection();
         String sql = "SELECT * FROM artists WHERE name = ?;";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -37,14 +53,5 @@ public class ArtistController extends Controller {
         return artists;
     }
 
-    public void insertRandomArtist(int rows) throws SQLException {
-        Faker faker = new Faker();
-        int i = 0;
-        while (i < rows) {
-            String fakeName = faker.artist().name();
-            String fakeCountry = faker.country().name();
-            create(fakeName, fakeCountry);
-            i++;
-        }
-    }
+
 }

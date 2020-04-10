@@ -1,5 +1,9 @@
 package models;
 
+/**
+ * Chart class
+ * -information about a chart
+ */
 public class Chart {
     private int id;
     private int albumId;
