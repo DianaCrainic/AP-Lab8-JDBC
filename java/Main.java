@@ -12,12 +12,12 @@ public class Main {
     public static void main(String[] args) {
         try {
             connection.setAutoCommit(false);
-            //createArtistsTable();
-            //createAlbumsTable();
-            //createChartsTable();
+            createArtistsTable();
+            createAlbumsTable();
+            createChartsTable();
             insertRandomData(ROWS);
             ChartController chartController = new ChartController();
-            chartController.showTop();
+            chartController.generateTop();
 
             connection.commit();
         } catch (SQLException exception) {
@@ -53,7 +53,7 @@ public class Main {
                     ");";
             statement.execute(query);
         } catch (SQLException exception) {
-            System.out.println("create table artists exception");
+            exception.printStackTrace();
         }
     }
 
@@ -69,7 +69,7 @@ public class Main {
                     ");";
             statement.execute(query);
         } catch (SQLException exception) {
-            System.out.println("create table albums exception");
+            exception.printStackTrace();
         }
     }
 
@@ -79,12 +79,12 @@ public class Main {
             String query = "create table chart (" +
                     "    id integer not null generated always as identity," +
                     "    album_id integer not null references albums on delete restrict," +
-                    "    sales bigint," +
+                    "    profit integer," +
                     "    primary key (id)" +
                     ");";
             statement.execute(query);
         } catch (SQLException exception) {
-            System.out.println("create table chart exception");
+            exception.printStackTrace();
         }
     }
 

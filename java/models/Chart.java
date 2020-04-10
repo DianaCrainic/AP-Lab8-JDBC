@@ -3,12 +3,12 @@ package models;
 public class Chart {
     private int id;
     private int albumId;
-    private int sales;
+    private int profit;
 
-    public Chart(int id, int albumId, int sales) {
+    public Chart(int id, int albumId, int profit) {
         this.id = id;
         this.albumId = albumId;
-        this.sales = sales;
+        this.profit = profit;
     }
 
     public int getId() {
@@ -19,8 +19,8 @@ public class Chart {
         return albumId;
     }
 
-    public int getSales() {
-        return sales;
+    public int getProfit() {
+        return profit;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class Chart {
         return "Chart{" +
                 "id=" + id +
                 ", albumId=" + albumId +
-                ", sales=" + sales +
+                ", profit=" + profit +
                 '}';
     }
 }
