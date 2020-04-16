@@ -1,11 +1,11 @@
-## JDBC
+# JDBC
 
 - Compulsory - all tasks
 - Optional - all tasks, except the last one (generating HTML reports)
 - Bonus - all tasks, except the last one (Visual VM)
 
 
-# Console Output:
+## Console Output:
     1. Elina Champlin - profit: 78
     2. Marcus Yost - profit: 59
     3. Calista Baumbach - profit: 35
