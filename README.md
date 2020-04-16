@@ -2,6 +2,7 @@
 
 - Compulsory - all tasks
 - Optional - all tasks, except the last one (generating HTML reports)
+- Bonus - all tasks, except the last one (Visual VM)
 
 
 # Console Output:
