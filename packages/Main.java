@@ -1,5 +1,6 @@
 import dao.*;
 import db.Database;
+import bonus.ThreadPoolExecutor;
 
 import java.sql.*;
 
@@ -10,17 +11,16 @@ import java.sql.*;
  */
 public class Main {
 
-    private static Connection connection = Database.getInstance().getConnection();;
+    private static Connection connection = Database.getInstance().getConnection();
 
-    private static final int ROWS = 50;
+    private static final int NumberOfRows = 50;
+    private static final int numberOfTasks = 100;
 
     public static void main(String[] args) {
         try {
             connection.setAutoCommit(false);
-            //createArtistsTable();
-            //createAlbumsTable();
-            //createChartsTable();
-            insertData(ROWS);
+            //createTables();
+            insertData(NumberOfRows);
             ChartController chartController = new ChartController();
             chartController.generateTop();
 
@@ -36,6 +36,13 @@ public class Main {
                 exception.printStackTrace();
             }
         }
+    }
+
+    private static void createTables() {
+        createArtistsTable();
+        createAlbumsTable();
+        createChartsTable();
+
     }
 
     /**
@@ -103,6 +110,14 @@ public class Main {
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
+    }
+
+    /**
+     * bonus
+     */
+    public static void runThreadPool(){
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(numberOfTasks);
+        threadPoolExecutor.start();
     }
 
 }

@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * singleton class Database that manages a connection to the database
  */
-public class Database {
+public class Database implements AutoCloseable {
 
     private static Database instance;
     private Connection connection;
@@ -33,5 +33,11 @@ public class Database {
             instance = new Database();
         }
         return instance;
+    }
+
+    public void close() throws Exception {
+        if (connection != null) {
+            connection.close();
+        }
     }
 }

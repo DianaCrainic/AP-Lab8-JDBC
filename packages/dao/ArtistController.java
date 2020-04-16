@@ -30,7 +30,7 @@ public class ArtistController extends Controller {
         Faker faker = new Faker();
         int i = 0;
         while (i < rows) {
-            String fakeName = faker.artist().name();
+            String fakeName = faker.name().fullName();
             String fakeCountry = faker.country().name();
             create(fakeName, fakeCountry);
             i++;
