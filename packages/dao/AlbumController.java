@@ -13,6 +13,8 @@ import java.sql.*;
  * -findByArtist - returns a list of albums
  */
 public class AlbumController extends Controller {
+    
+    private Connection connection = Database.getConnection();
 
     public AlbumController() {
     }
