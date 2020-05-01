@@ -8,7 +8,7 @@ import java.sql.Connection;
  * - responsible for connection to DB
  */
 public class Controller {
-    Connection connection = null;
+    private Connection connection = null;
 
     Connection getConnection(){
         if(connection == null){
