@@ -13,6 +13,8 @@ import java.util.*;
  * -findByName - returns a list of artists
  */
 public class ArtistController extends Controller {
+    
+    private Connection connection = Database.getConnection();
 
     public ArtistController() {
     }
